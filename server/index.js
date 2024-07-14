@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const AuthRouter = require('./src/routes/AuthRouter');
+const ProductRouter = require('./src/routes/ProductRouter');
 require('dotenv').config();
 require('./src/models/db');
 
@@ -16,6 +17,7 @@ app.get('/ping', (req, res) => {
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/auth', AuthRouter);
+app.use('/products', ProductRouter);
 
 
 app.listen(PORT, () => {
