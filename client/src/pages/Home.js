@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function Home() {
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    setUserName(localStorage.getItem('userName'));
+
+  }, []);
+
   return (
-    <div>Home</div>
+    <div><h1>{userName}</h1></div>
   )
 }
 
