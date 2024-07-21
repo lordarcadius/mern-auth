@@ -26,7 +26,7 @@ function Login() {
       return handleError("Fields can't be empty!");
     }
     try {
-      const url = "http://localhost:8080/auth/login";
+      const url = "https://mern-auth-server-lordarcadius-projects.vercel.app/auth/login";
       const response = await fetch(url, {
         method: 'POST',
         headers: {
