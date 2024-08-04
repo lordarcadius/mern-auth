@@ -11,11 +11,14 @@ const signupValidation = (req, res, next) => {
     const { error } = schema.validate(req.body);
 
     if (error) {
-        return res.status(400)
-            .json({ message: "Bad request", error })
+        let errorMessage = error.details[0].message;
+        errorMessage = errorMessage.replace(/\"/g, ''); // Remove quotes
+        errorMessage = errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1); // Capitalize first letter
+        return res.status(400).json({ message: errorMessage, success: false });
     }
     next();
 };
+
 
 const loginValidation = (req, res, next) => {
     const schema = Joi.object({
@@ -26,11 +29,14 @@ const loginValidation = (req, res, next) => {
     const { error } = schema.validate(req.body);
 
     if (error) {
-        return res.status(400)
-            .json({ message: "Bad request", error })
+        let errorMessage = error.details[0].message;
+        errorMessage = errorMessage.replace(/\"/g, ''); // Remove quotes
+        errorMessage = errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1); // Capitalize first letter
+        return res.status(400).json({ message: errorMessage, success: false });
     }
     next();
 };
+
 
 
 module.exports = {
